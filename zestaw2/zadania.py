@@ -37,17 +37,20 @@ def line_operations(line):
     length = len(longest)
     print("najdluzszy: "+ longest + ", dlugosc: " + str(length))
 
+    # 2.17
+    # alfabetycznie
+    print("Alfabetycznie", sorted(words))
+    # dlugoscowo
+    print("Dlugoscowo", sorted(words, key=len))
 
-# ZADANIE 2.15
-# Na liście L znajdują się liczby całkowite dodatnie. Stworzyć string będący ciągiem cyfr kolejnych liczb z listy L.
-def string_from_list(L):
-    y = ''
 
+#2.17
 # 2.16
 # W tekście znajdującym się w stringu line zamienić ciąg znaków "GvR" na "Guido van Rossum"
 def change_gvr(line):
     line = line.replace("GvR", "Guido van Rossum")
     print(line)
+
 
 if __name__ == '__main__':
     lin = 'Podstawowe zdanie\nz GvR kilkoma\nlinijkami'
@@ -55,5 +58,17 @@ if __name__ == '__main__':
     special_print("abc")
     line_operations(lin)
     change_gvr(lin)
-    print(string_from_list([1,12,123]))
 
+    # 2.15
+    L = [1,12,123,9]
+    print(''.join(str(x) for x in L))
+
+    # 2.18
+    # policzyc zera
+    number = 10020304050
+    out18 = str(number).count("0")
+    print(out18)
+
+    # 2.19
+    out19 = ''.join(str(x).zfill(3) for x in L)
+    print(out19)
