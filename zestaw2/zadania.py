@@ -1,3 +1,5 @@
+#!/user/bin/env python3
+
 # zadanie 2.10
 # funkcja oblicza liczbę wyrazów w wieloliniowym stringu
 def count_words(line):
