@@ -73,3 +73,4 @@ if __name__ == '__main__':
     # 2.19
     out19 = ''.join(str(x).zfill(3) for x in L)
     print(out19)
+
