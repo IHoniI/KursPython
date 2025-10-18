@@ -11,7 +11,7 @@ def special_print(word):
     print('_'.join(word))
 
 
-# zadanie 2.12, 2.13, 2.14, 2.15
+# zadanie 2.12, 2.13, 2.14, 2.15, 2.17
 def line_operations(line):
     # Zbudować string stworzony z pierwszych znaków wyrazów ze stringu line.
     # Zbudować napis stworzony z ostatnich znaków wyrazów ze stringu line.
@@ -44,7 +44,6 @@ def line_operations(line):
     print("Dlugoscowo", sorted(words, key=len))
 
 
-#2.17
 # 2.16
 # W tekście znajdującym się w stringu line zamienić ciąg znaków "GvR" na "Guido van Rossum"
 def change_gvr(line):
