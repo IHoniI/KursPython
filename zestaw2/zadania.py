@@ -11,26 +11,49 @@ def special_print(word):
     print('_'.join(word))
 
 
-# zadanie 2.12
-# Zbudować string stworzony z pierwszych znaków wyrazów ze stringu line.
-# Zbudować napis stworzony z ostatnich znaków wyrazów ze stringu line.
-def build_str(line):
-    tmp = line.split()
+# zadanie 2.12, 2.13, 2.14, 2.15
+def line_operations(line):
+    # Zbudować string stworzony z pierwszych znaków wyrazów ze stringu line.
+    # Zbudować napis stworzony z ostatnich znaków wyrazów ze stringu line.
+    words = line.split()
     first = ''
     last = ''
-    for i in range(len(tmp)):
-        first += tmp[i][0]
-        last += tmp[i][-1]
+    for i in range(len(words)):
+        first += words[i][0]
+        last += words[i][-1]
 
     print(first)
     print(last)
 
+    # 2.13 Znaleźć łączną długość wyrazów w stringu line.
+    lenghts = [len(x) for x in words]
+    print(sum(lenghts))
+
+    # 2.14
+    # (a) najdłuższy wyraz
+    longest = max(line.split(), key=len)
+
+    # (b) długość najdłuższego wyrazu
+    length = len(longest)
+    print("najdluzszy: "+ longest + ", dlugosc: " + str(length))
 
 
+# ZADANIE 2.15
+# Na liście L znajdują się liczby całkowite dodatnie. Stworzyć string będący ciągiem cyfr kolejnych liczb z listy L.
+def string_from_list(L):
+    y = ''
+
+# 2.16
+# W tekście znajdującym się w stringu line zamienić ciąg znaków "GvR" na "Guido van Rossum"
+def change_gvr(line):
+    line = line.replace("GvR", "Guido van Rossum")
+    print(line)
 
 if __name__ == '__main__':
-    lin = 'Podstawowe zdanie\nz , kilkoma\nlinijkami'
+    lin = 'Podstawowe zdanie\nz GvR kilkoma\nlinijkami'
     print(count_words(lin))
     special_print("abc")
-    build_str(lin)
+    line_operations(lin)
+    change_gvr(lin)
+    print(string_from_list([1,12,123]))
 
