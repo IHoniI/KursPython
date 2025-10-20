@@ -1,0 +1,39 @@
+ZADANIE 3.1
+Czy podany kod jest poprawny składniowo w Pythonie? Jeśli nie, to dlaczego?
+
+x = 2; y = 3;
+if (x > y):
+    result = x;
+else:
+    result = y;
+
+    Powyższy segment da się uruchomić, natomiast nie jest on poprawny.
+    Nie powinno być ; na końcach wyrażeń, oraz deklaracje x i y powinny być w osobnych liniach
+
+for i in "axby": if ord(i) < 100: print (i)
+
+    Kod nie może być w 1 linijce. brakuje wcięć. powinnien być
+
+for i in "axby":
+    if ord(i) < 100:
+        print (i)
+
+    ewentualnie:
+
+for i in "axby":
+    if ord(i) < 100:print (i)
+
+
+for i in "axby": print (ord(i) if ord(i) < 100 else i)
+
+    kod działa, chociaż nie powinno być spacji między print a nawiasem
+
+ZADANIE 3.2
+Co jest złego w kodzie:
+
+L = [3, 5, 4] ; L = L.sort()
+x, y = 1, 2, 3
+X = 1, 2, 3 ; X[1] = 4
+X = [1, 2, 3] ; X[3] = 4
+X = "abc" ; X.append("d")
+L = list(map(pow, range(8)))
