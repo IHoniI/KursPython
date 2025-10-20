@@ -19,8 +19,7 @@ def create_measure(length):
         tmp = f"{i:>5}"
         line2 += tmp
 
-    print(line1)
-    print(line2)
+    out = line1+"\n"+line2
+    return out
 
-
-create_measure(13)
+print(create_measure(13))
