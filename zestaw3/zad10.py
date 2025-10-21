@@ -41,5 +41,5 @@ def roman2int(roman):
 
 r = "MMXXV"
 r2 = "MMCDXLVII"
-r3 = "XL"
-roman2int(r2)
+r3 = "XLIX"
+roman2int(r3)
