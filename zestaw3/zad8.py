@@ -10,6 +10,6 @@ s2 = [2 * x for x in range(10)]
 S1 = set(s1)
 S2 = set(s2)
 
-print(S1.intersection(S2))
+print(list(S1.intersection(S2)))
 
-print(S1.union(S2))
+print(list(S1.union(S2)))
