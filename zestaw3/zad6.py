@@ -15,6 +15,7 @@ Przykładowy prostokąt składający się 2 × 4 pól ma postać:
 
 def create_rectangle(x, y):
     line1 = "---".join("+" for n in range(y+1))
+    # może być "---".join("+" * (x+1))
     line2 = "   ".join("|" for n in range(y+1))
 
     lines = line1+"\n"+line2
