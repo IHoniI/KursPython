@@ -1,6 +1,3 @@
-"""factorial(n)"""
-
-
 def factorial(n):
     out = 1
     while n > 1:
