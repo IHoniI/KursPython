@@ -47,6 +47,7 @@ def is_zero(frac):
         return True
     return False
 
+
 def cmp_frac(frac1, frac2):  # -1 | 0 | +1
     num1 = frac1[0] * frac2[1]
     num2 = frac2[0] * frac1[1]
