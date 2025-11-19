@@ -9,10 +9,10 @@ class Point:
         self.y = y
 
     def __str__(self):  # zwraca string "(x, y)"
-        return "("+str(self.x)+", "+str(self.y)+")"
+        return "({}, {})".format(self.x, self.y)
 
     def __repr__(self):    # zwraca string "Point(x, y)"
-        return "Point("+str(self.x)+", "+str(self.y)+")"
+        return "Point({}, {})".format(self.x, self.y)
 
     def __eq__(self, other):   # obsługa point1 == point2
         return (self.x == other.x) and (self.y == other.y)

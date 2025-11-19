@@ -11,10 +11,10 @@ class Frac:
     def __str__(self):  # zwraca "x/y" lub "x" dla y=1
         if self.y == 1:
             return str(self.x)
-        return str(self.x) + "/" + str(self.y)
+        return "{}/{}".format(self.x, self.y)
 
     def __repr__(self):  # zwraca "Frac(x, y)"
-        return "Frac("+str(self.x) + ", " + str(self.y) + ")"
+        return "Frac({}, {})".format(self.x, self.y)
 
     def __cmp__(self, other):  # cmp(frac1, frac2)    # Py2
         num1 = self.x * other.y
