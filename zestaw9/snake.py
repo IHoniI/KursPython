@@ -27,7 +27,7 @@ clock = pygame.time.Clock()
 # MAIN GAME LOOP
 done = False
 
-#snake = [(100, 100)]
+snake = [(90, 100)]
 
 direction = (BLOCK, 0)
 new_direction = (BLOCK, 0)
@@ -109,17 +109,24 @@ while not done:
     # DRAWING
     screen.fill((0, 0, 0))
     pygame.draw.ellipse(screen, red, good_fruit)
-    head.move_ip(direction)
 
-    if head.colliderect(good_fruit):
+    new_head = (head.x + direction[0], head.y + direction[1])
+    snake.insert(0, new_head)
+
+    head.x, head.y = new_head
+    if not head.colliderect(good_fruit):
+        snake.pop()
+    # jeśli zjadłem owoc nie usuwam ogona
+    else:
         score += 1
         FPS += 1
         new_fruit = True
 
+    for segment in snake:
+        pygame.draw.rect(screen, green, (segment[0], segment[1], BLOCK, BLOCK))
+
     if head.left < 0 or head.right > width or head.top < 0 or head.bottom > height:
         game_over("Snake outside the board")
-
-    pygame.draw.rect(screen, green, head)
 
     text_surf = font.render("Score: {}".format(score), True, white)
     text_rect = text_surf.get_rect(center=(420, 10))
