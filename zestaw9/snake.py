@@ -8,6 +8,7 @@ screen = pygame.display.set_mode(size)  # stworzenie display Surface
 pygame.display.set_caption('SuperSnake')
 
 BLOCK = 10
+score = 0
 
 # Kolory
 black = (0, 0, 0)
@@ -18,7 +19,7 @@ green = (0, 255, 0)
 blue = (0, 0, 255)
 
 # CLOCK
-FPS = 25
+FPS = 20
 clock = pygame.time.Clock()
 
 # MAIN GAME LOOP
@@ -34,10 +35,10 @@ head = pygame.Rect(100, 100, 10, 10)
 new_fruit = True
 good_fruit = pygame.Rect(-1, -1, 10, 10)
 
-move_counter = 0
 
 # czcionka
-font = pygame.font.SysFont("comicsansms", size)
+font = pygame.font.SysFont("comicsansms", size=20)
+
 
 while not done:
     # HANDLE EVENTS
@@ -88,9 +89,16 @@ while not done:
     head.move_ip(direction)
 
     if head.colliderect(good_fruit):
+        score += 1
+        FPS += 1
         new_fruit = True
 
     pygame.draw.rect(screen, green, head)
+
+    text_surf = font.render("Score: {}".format(score), True, white)
+    text_rect = text_surf.get_rect(center=(420, 10))
+    screen.blit(text_surf, text_rect)
+
     pygame.display.flip()
 
     clock.tick(FPS)
