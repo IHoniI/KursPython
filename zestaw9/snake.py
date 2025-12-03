@@ -1,10 +1,13 @@
 import pygame
+import random
 
 # INITIALIZE THE GAME
 pygame.init()
-size = (width, height) = (400, 300)  # rozmiary okna w pikselach
+size = (width, height) = (500, 400)  # rozmiary okna w pikselach
 screen = pygame.display.set_mode(size)  # stworzenie display Surface
 pygame.display.set_caption('SuperSnake')
+
+BLOCK = 10
 
 # Kolory
 black = (0, 0, 0)
@@ -15,18 +18,26 @@ green = (0, 255, 0)
 blue = (0, 0, 255)
 
 # CLOCK
-FPS = 30
+FPS = 25
 clock = pygame.time.Clock()
 
 # MAIN GAME LOOP
 done = False
 
-snake = [(100, 100)]
+#snake = [(100, 100)]
 
-direction = (2, 0)
-new_direction = (2, 0)
+direction = (BLOCK, 0)
+new_direction = (BLOCK, 0)
 
 head = pygame.Rect(100, 100, 10, 10)
+
+new_fruit = True
+good_fruit = pygame.Rect(-1, -1, 10, 10)
+
+move_counter = 0
+
+# czcionka
+font = pygame.font.SysFont("comicsansms", size)
 
 while not done:
     # HANDLE EVENTS
@@ -46,18 +57,18 @@ while not done:
 
             if x > 0:
                 if x > abs(y):
-                    new_direction = (2, 0)  # Right
+                    new_direction = (BLOCK, 0)  # Right
                 elif y > 0:
-                    new_direction = (0, 2)  # Up
+                    new_direction = (0, BLOCK)  # Up
                 else:
-                    new_direction = (0, -2)  # Down
+                    new_direction = (0, -BLOCK)  # Down
             else:
                 if abs(x) > abs(y):
-                    new_direction = (-2, 0)  # Left
+                    new_direction = (-BLOCK, 0)  # Left
                 elif y > 0:
-                    new_direction = (0, 2)  # Up
+                    new_direction = (0, BLOCK)  # Up
                 else:
-                    new_direction = (0, -2)  # Down
+                    new_direction = (0, -BLOCK)  # Down
 
             if direction[0] + new_direction[0] == 0 and direction[1] + new_direction[1] == 0:
                 print("Zabroniony jest ruch wstecz (koniec gry")
@@ -65,10 +76,19 @@ while not done:
             direction = new_direction
             print(new_direction)
 
+    # Spawning fruit
+    if new_fruit:
+        good_fruit.x = random.randrange(2, width-2, BLOCK)
+        good_fruit.y = random.randrange(2, height-2, BLOCK)
+        new_fruit = False
+
     # DRAWING
     screen.fill((0, 0, 0))
-
+    pygame.draw.ellipse(screen, red, good_fruit)
     head.move_ip(direction)
+
+    if head.colliderect(good_fruit):
+        new_fruit = True
 
     pygame.draw.rect(screen, green, head)
     pygame.display.flip()
