@@ -1,3 +1,5 @@
+import time
+
 import pygame
 import random
 
@@ -38,6 +40,27 @@ good_fruit = pygame.Rect(-1, -1, 10, 10)
 
 # czcionka
 font = pygame.font.SysFont("comicsansms", size=20)
+font2 = pygame.font.SysFont("comicsansms", size=40)
+
+
+def game_over(reason):
+    screen.fill((0, 0, 0))
+    text_surf1 = font2.render("GAME OVER!", True, red)
+    text_rect1 = text_surf1.get_rect(center=(width // 2, (height // 2) - 10))
+    screen.blit(text_surf1, text_rect1)
+
+    text_surf = font.render(reason, True, red)
+    text_rect = text_surf.get_rect(center=(width // 2, (height // 2) + 40))
+    screen.blit(text_surf, text_rect)
+
+    text_surf = font.render("score: {}".format(score), True, red)
+    text_rect = text_surf.get_rect(center=(width // 2, (height // 2) + 70))
+    screen.blit(text_surf, text_rect)
+
+    pygame.display.flip()
+    time.sleep(3)
+    pygame.quit()
+    quit()
 
 
 while not done:
@@ -72,7 +95,7 @@ while not done:
                     new_direction = (0, -BLOCK)  # Down
 
             if direction[0] + new_direction[0] == 0 and direction[1] + new_direction[1] == 0:
-                print("Zabroniony jest ruch wstecz (koniec gry")
+                game_over("Illegal move")
 
             direction = new_direction
             print(new_direction)
@@ -93,6 +116,9 @@ while not done:
         FPS += 1
         new_fruit = True
 
+    if head.left < 0 or head.right > width or head.top < 0 or head.bottom > height:
+        game_over("Snake outside the board")
+
     pygame.draw.rect(screen, green, head)
 
     text_surf = font.render("Score: {}".format(score), True, white)
@@ -105,3 +131,5 @@ while not done:
 
 pygame.quit()  # deaktywacja pygame
 # dalsze instrukcje programu bez pygame
+
+
