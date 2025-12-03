@@ -38,7 +38,7 @@ new_fruit = True
 good_fruit = pygame.Rect(-1, -1, 10, 10)
 
 
-# czcionka
+# czcionki
 font = pygame.font.SysFont("comicsansms", size=20)
 font2 = pygame.font.SysFont("comicsansms", size=40)
 
@@ -66,16 +66,13 @@ def game_over(reason):
 while not done:
     # HANDLE EVENTS
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:  # QUIT Event
-            done = True  # chcemy zakończyć pętlę while;
-            # samo 'break' nie wystarczy, bo mamy zagnieżdżoną pętlę
+        if event.type == pygame.QUIT:
+            done = True
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            # print("event down dict {}".format(event.__dict__))  # atrybuty button, pos
             position = event.pos  # (x, y)
 
             # get direction
-
             x = position[0] - head.x
             y = position[1] - head.y
 
@@ -98,12 +95,11 @@ while not done:
                 game_over("Illegal move")
 
             direction = new_direction
-            print(new_direction)
 
     # Spawning fruit
     if new_fruit:
-        good_fruit.x = random.randrange(2, width-2, BLOCK)
-        good_fruit.y = random.randrange(2, height-2, BLOCK)
+        good_fruit.x = random.randrange(10, width-10, BLOCK)
+        good_fruit.y = random.randrange(10, height-10, BLOCK)
         new_fruit = False
 
     # DRAWING
@@ -135,8 +131,3 @@ while not done:
     pygame.display.flip()
 
     clock.tick(FPS)
-
-pygame.quit()  # deaktywacja pygame
-# dalsze instrukcje programu bez pygame
-
-
